@@ -116,6 +116,15 @@ players.append(p1)
 #
 # If the user enters "q", quit the game.
 
+# while True:
+#     print(players[0].room.name)
+#     print(players[0].room.desc)
 
-for p in players:
-    print(f"Current room is {p.room}")
+if move == 'n':
+    players[0].room.n_to
+elif move == 's':
+    players[0].room.s_to
+elif move == 'e':
+    players[0].room.e_to
+elif move == 'w':
+    players[0].room.w_to
