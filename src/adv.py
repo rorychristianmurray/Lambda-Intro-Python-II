@@ -31,11 +31,11 @@ items = {
     'iceshiv': Item('Ice shiv', 'A shiv made entirely of ice!'),
 }
 
-print("narrow:\n ", room['narrow'])
-print("*********\n\n\n*********")
-print(room['outside'])
-print("*********\n\n\n*********")
-print("dir test 1", room['outside'].n_to)
+# print("narrow:\n ", room['narrow'])
+# print("*********\n\n\n*********")
+# print(room['outside'])
+# print("*********\n\n\n*********")
+# print("dir test 1", room['outside'].n_to)
 
 
 # Link rooms together
@@ -50,7 +50,7 @@ room['narrow'].w_to = room['foyer']
 room['narrow'].n_to = room['treasure']
 room['treasure'].s_to = room['narrow']
 
-print("dir test 2", room['outside'].n_to)
+# print("dir test 2", room['outside'].n_to)
 
 #
 # Main
@@ -60,6 +60,8 @@ print("dir test 2", room['outside'].n_to)
 # Create REPL parser which takes one arg [DONE]
 # that arg has 4 valid commands, n, s, e, and w [DONE]
 # if player moves to occupied room throw an error
+
+move = input('Your move : ')
 
 
 # define program description
@@ -76,8 +78,8 @@ parser.add_argument("direction", help="set direction of character move. Valid mo
                     'n', 's', 'e', 'w', 'q'])
 
 # parse args
-args = parser.parse_args()
-print("args : ", args)
+args = parser.parse_args(move)
+# print("args : ", args)
 
 # check for --version or -V
 if args.version:
@@ -88,7 +90,7 @@ if args.width:
     print("set output width to %s" % args.width)
 
 d = args.direction
-print("d: ", d)
+# print("d: ", d)
 
 
 # Make a new player object that is currently in the 'outside' room.
@@ -96,7 +98,12 @@ print("d: ", d)
 p1 = Player("Chives", "A man of considerable proportions",
             room['outside'], items['flamesword'])
 
-print("p1: ", p1)
+# print("p1: ", p1)
+
+# instantiate players
+
+players = []
+players.append(p1)
 
 # Write a loop that:
 #
@@ -108,3 +115,7 @@ print("p1: ", p1)
 # Print an error message if the movement isn't allowed.
 #
 # If the user enters "q", quit the game.
+
+
+for p in players:
+    print(f"Current room is {p.room}")
