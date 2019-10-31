@@ -1,5 +1,7 @@
 import argparse
 from room import Room
+from item import Item
+from player import Player
 
 # Declare all the rooms
 # uncomment block
@@ -22,11 +24,18 @@ chamber! Sadly, it has already been completely emptied by
 earlier adventurers. The only exit is to the south."""),
 }
 
+# declare items
+items = {
+    'flamesword': Item('Flame sword', 'A flaming sword!'),
+    'poisondagger': Item('Poison dagger', 'A poisoned dagger!'),
+    'iceshiv': Item('Ice shiv', 'A shiv made entirely of ice!'),
+}
+
 print("narrow:\n ", room['narrow'])
 print("*********\n\n\n*********")
 print(room['outside'])
 print("*********\n\n\n*********")
-print("dir test", room['outside'].n_to)
+print("dir test 1", room['outside'].n_to)
 
 
 # Link rooms together
@@ -40,6 +49,8 @@ room['overlook'].s_to = room['foyer']
 room['narrow'].w_to = room['foyer']
 room['narrow'].n_to = room['treasure']
 room['treasure'].s_to = room['narrow']
+
+print("dir test 2", room['outside'].n_to)
 
 #
 # Main
@@ -81,6 +92,11 @@ print("d: ", d)
 
 
 # Make a new player object that is currently in the 'outside' room.
+
+p1 = Player("Chives", "A man of considerable proportions",
+            room['outside'], items['flamesword'])
+
+print("p1: ", p1)
 
 # Write a loop that:
 #
